@@ -8,7 +8,6 @@ import gsap from "gsap";
 import { detailData } from "@/data/detail";
 import Modal from "@/components/Modal";
 import { Swipe } from "@/components/Swipe";
-import Menu from "@/components/Menu";
 import Footer from "@/components/Footer";
 
 
@@ -124,7 +123,7 @@ export default function Detail() {
                     {
                         detailData.map((item, index) => {
                             return (
-                                <div className={index === detailData.length - 1 ? "flex flex-col z-20 pt-20 gap-10" : "flex h-lvh flex-col z-20 py-20 gap-10"}>
+                                <div key={`${item.title}-${index}`} className={index === detailData.length - 1 ? "flex flex-col z-20 pt-20 gap-10" : "flex h-lvh flex-col z-20 py-20 gap-10"}>
                                     <div className="flex flex-col gap-6 mx-7">
                                         <h1 className="font-semibold text-[21px] text-white">{item.title}</h1>
                                         <p className="text-[12px] leading-6 font-normal">{item.description}</p>
