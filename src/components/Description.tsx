@@ -29,7 +29,7 @@ export default function Description({
                 alt="배경 이미지"
             />
             {/* 어둡게 오버레이 */}
-            <div className="absolute inset-0 bg-black/50 z-10"></div>
+            <div className="dim absolute inset-0 bg-black/60 z-10 opacity-0"></div>
 
             {/* 중앙 컨텐츠 */}
             <div className="z-20 text-white txt-wrap h-full">
@@ -53,12 +53,8 @@ export default function Description({
                     </div>
                     <ArrowIconButton
                         text="MORE"
-                        href={{
-                            pathname: "/Detail",
-                            query: {
-                                image: "/images/main/jeogjae_architect.png"
-                            }
-                        }}
+
+                        href={""}
                     />
                 </div>
             </div>

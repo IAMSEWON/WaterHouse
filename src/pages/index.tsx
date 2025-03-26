@@ -119,13 +119,29 @@ export default function Home() {
 
     gsap.set(".desc-0", {
       // opacity: 1,
+      zIndex: 5
+    });
+    gsap.set(".desc-1", {
+      // opacity: 1,
+      zIndex: 4
+    });
+    gsap.set(".desc-2", {
+      // opacity: 1,
+      zIndex: 3
+    });
+    gsap.set(".desc-3", {
+      // opacity: 1,
       zIndex: 2
     });
+    gsap.set(".desc-4", {
+      // opacity: 1,
+      zIndex: 1
+    });
+
     gsap.set([".desc-1", ".desc-2", ".desc-3", ".desc-4"], {
       position: "absolute",
       top: 0,
       left: 0,
-      zIndex: 1,
       opacity: 0,
     });
 
@@ -134,39 +150,34 @@ export default function Home() {
       scrollTrigger: {
         trigger: ".scroll-ani-wrap",
         start: "top top", // .scroll-ani-wrap의 top이 화면 top에 도달할 때
-        end: "2000% bottom", // .scroll-ani-wrap의 bottom이 화면 bottom에 도달할 때
+        end: "1700% bottom", // .scroll-ani-wrap의 bottom이 화면 bottom에 도달할 때
         scrub: 1.2,
         pin: true, // .scroll-ani-wrap을 고정시킴
         pinSpacing: true,
       }
     })
-      .to(".desc-0 .txt-wrap", {
-        y: "-100%"
-      }).to(".desc-0", {
-        opacity: 0,
-      })
-      .to(".desc-1", {
-        opacity: 1,
-      }, "<")
-      .to(".desc-1 .txt-wrap", {
-        y: "-100%"
-      }).to(".desc-1", {
-        opacity: 0,
-      })
-      .to(".desc-2", { opacity: 1 }, "<-0.2")
-      .to(".desc-2 .txt-wrap", {
-        y: "-100%"
-      }).to(".desc-2", {
-        opacity: 0,
-      })
-      .to(".desc-3", { opacity: 1 }, "<-0.2").to(".desc-3 .txt-wrap", {
-        y: "-100%"
-      }).to(".desc-3", {
-        opacity: 0,
-      })
-      .to(".desc-4", { opacity: 1 }, "<-0.2").to(".desc-4 .txt-wrap", {
-        y: "-100%"
-      });
+      .to(".desc-0 .dim", { opacity: 1 }, ">")
+      .to(".desc-0 .txt-wrap", { y: "-100%" })
+      .to(".desc-0", { opacity: 0 })
+      .to(".desc-0", { display: "none" })
+      .to(".desc-1", { opacity: 1 }, "<-1")
+      .to(".desc-1 .dim", { opacity: 1 }, ">")
+      .to(".desc-1 .txt-wrap", { y: "-100%" })
+      .to(".desc-1", { opacity: 0 })
+      .to(".desc-1", { display: "none" })
+      .to(".desc-2", { opacity: 1 }, "<-1")
+      .to(".desc-2 .dim", { opacity: 1 }, ">")
+      .to(".desc-2 .txt-wrap", { y: "-100%" })
+      .to(".desc-2", { opacity: 0 })
+      .to(".desc-2", { display: "none" })
+      .to(".desc-3", { opacity: 1 }, "<-1")
+      .to(".desc-3 .dim", { opacity: 1 }, ">")
+      .to(".desc-3 .txt-wrap", { y: "-100%" })
+      .to(".desc-3", { opacity: 0 })
+      .to(".desc-3", { display: "none" })
+      .to(".desc-4", { opacity: 1 }, "<-1")
+      .to(".desc-4 .dim", { opacity: 1 }, ">")
+      .to(".desc-4 .txt-wrap", { y: "-100%" });
 
   }
 
@@ -213,14 +224,14 @@ export default function Home() {
       <Splash animation={true} isMenu={isMenu} onMenuTextStart={handleSplashStart} onComplete={handleSplashEnd} onMenuHandler={() => handleMenuToggle()} />
       <Menu isOpen={isMenu} onClose={handleMenuToggle} />
 
-      <video ref={videoRef} className="fixed top-0 left-0 w-full h-full z-0" width="1920" height="1080" loop controls={false} preload="none" playsInline muted >
-        <source src="/videos/sample_video_03.mp4" type="video/mp4" />
+      <video ref={videoRef} className="fixed top-0 left-0 w-full h-full z-0 object-cover" width="1920" height="1080" loop controls={false} preload="none" playsInline muted >
+        <source src="/videos/sample_video_04.mp4" type="video/mp4" />
         <track
-          src="/videos/sample_video_03.mp4"
+          src="/videos/sample_video_04.mp4"
           kind="subtitles"
           srcLang="en"
           label="English"
-        />
+        />배경 이미지
       </video>
 
       {isSplash && (
@@ -260,7 +271,7 @@ export default function Home() {
             <AccordionMenu />
             <EmailButton className="mt-[10%] mb-[60%] mx-2" />
           </div>
-          <div ref={containerRef} className="flex flex-col w-full scroll-ani-wrap">
+          <div ref={containerRef} className="flex flex-col w-full scroll-ani-wrap bg-black">
             {mainData.map((item, index) => (
               <div key={item.title} className={`description-section desc-${index} h-screen`}>
                 <Description {...item} index={index} />

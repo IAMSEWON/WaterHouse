@@ -4,9 +4,11 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import { useEffect, useRef, useState } from "react";
 
 
 function AccordionReserve() {
+
     return (
         <div className="overflow-x-auto shadow-md rounded-lg">
             <table className="min-w-full text-left table-auto">
@@ -129,8 +131,40 @@ function AccordionLocation() {
 
 
 export function AccordionMenu() {
+    const elementRef = useRef<HTMLDivElement>(null);
+    const [isVisible, setIsVisible] = useState(true);
+    const lastScrollY = useRef(0); // 이전 스크롤 위치 저장
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (elementRef.current) {
+                const rect = elementRef.current.getBoundingClientRect();
+
+                // 아래로 스크롤할 때만 처리
+                if (currentScrollY > lastScrollY.current) {
+                    if (rect.bottom < 0) setIsVisible(false); // 화면에서 완전히 사라진 경우
+                } else {
+                    if (rect.top < window.innerHeight) setIsVisible(true); // 다시 보이면 true
+                }
+
+                lastScrollY.current = currentScrollY;
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+
+    useEffect(() => {
+        console.log(isVisible)
+    }, [isVisible])
+
+
     return (
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" className="w-full aaa" ref={elementRef} collapsible={isVisible}>
             <AccordionItem value="item-1">
                 <AccordionTrigger>예약안내</AccordionTrigger>
                 <AccordionContent>
