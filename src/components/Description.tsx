@@ -18,7 +18,7 @@ export default function Description({
     description,
 }: DescriptionProps) {
     return (
-        <div className="relative border w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+        <div className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
             {/* 배경 이미지 */}
             <Image
                 width={1920}

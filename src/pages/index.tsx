@@ -103,7 +103,7 @@ export default function Home() {
     // 모든 section의 opacity를 0.5로 설정
     sections.forEach((section) => {
       gsap.set(section, {
-        opacity: 0,
+        // opacity: 0,
       });
 
       // section 안의 .description-wrap의 x값을 -50%로 설정
@@ -114,7 +114,15 @@ export default function Home() {
     });
 
     gsap.set(".desc-0", {
-      opacity: 1,
+      // opacity: 1,
+      zIndex: 2
+    });
+    gsap.set([".desc-1", ".desc-2", ".desc-3", ".desc-4"], {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      zIndex: 1,
+      opacity: 0,
     });
 
     // scrollTrigger로 애니메이션 설정
@@ -122,17 +130,38 @@ export default function Home() {
       scrollTrigger: {
         trigger: ".scroll-ani-wrap",
         start: "top top", // .scroll-ani-wrap의 top이 화면 top에 도달할 때
-        end: "100% bottom", // .scroll-ani-wrap의 bottom이 화면 bottom에 도달할 때
-        scrub: true,
+        end: "2000% bottom", // .scroll-ani-wrap의 bottom이 화면 bottom에 도달할 때
+        scrub: 1.2,
         pin: true, // .scroll-ani-wrap을 고정시킴
-        pinSpacing: false,
-        markers: true, // 디버깅용 마커 표시
+        pinSpacing: true,
       }
     })
       .to(".desc-0 .txt-wrap", {
         y: "-100%"
       }).to(".desc-0", {
         opacity: 0,
+      })
+      .to(".desc-1", {
+        opacity: 1,
+      }, "<")
+      .to(".desc-1 .txt-wrap", {
+        y: "-100%"
+      }).to(".desc-1", {
+        opacity: 0,
+      })
+      .to(".desc-2", { opacity: 1 }, "<-0.2")
+      .to(".desc-2 .txt-wrap", {
+        y: "-100%"
+      }).to(".desc-2", {
+        opacity: 0,
+      })
+      .to(".desc-3", { opacity: 1 }, "<-0.2").to(".desc-3 .txt-wrap", {
+        y: "-100%"
+      }).to(".desc-3", {
+        opacity: 0,
+      })
+      .to(".desc-4", { opacity: 1 }, "<-0.2").to(".desc-4 .txt-wrap", {
+        y: "-100%"
       });
 
   }
@@ -222,16 +251,18 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <EmailButton className="mt-[56px] mb-[218px] mx-3" />
+          {/* <EmailButton className="mt-[56px] mb-[218px] mx-3" /> */}
           {/* 지도 이미지 */}
-          <Image
-            width={1920}
-            height={1080}
-            src="/images/main_map.png"
-            alt="위치"
-            className="z-50"
-          />
-          <Footer />
+          <div className="flex flex-col">
+            <Image
+              width={1920}
+              height={1080}
+              src="/images/main_map.png"
+              alt="위치"
+              className="z-50"
+            />
+            <Footer />
+          </div>
         </div>
       )}
     </div>
