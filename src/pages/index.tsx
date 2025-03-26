@@ -86,7 +86,11 @@ export default function Home() {
         '.main-first-section',
         { opacity: 1, duration: 2, ease: "power2.out" },
         "<"
-      );
+      ).to(
+        '.main-first-section-text',
+        { marginTop: '50%', duration: 2, ease: "power2.out" },
+        "<"
+      )
     });
   };
 
@@ -212,7 +216,7 @@ export default function Home() {
       {isSplash && (
         <div className="main-first-section flex flex-col flex-1 overflow-y-auto z-10 opacity-0">
           <div className="flex flex-col gap-[72px] mx-[10px]">
-            <div className="mt-[180%] whitespace-pre-line text-[15.5px] leading-7 tracking-[-5%] font-normal text-white">
+            <div className="main-first-section-text mt-[120%] whitespace-pre-line text-[15.5px] leading-7 tracking-[-5%] font-normal text-white">
               더 워터하우스
               <br />
               물, 가장 자연스러운 움직임

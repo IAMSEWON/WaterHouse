@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ArrowIconButton from "./ArrowIconButton";
 
 type DescriptionProps = {
     title: string;
@@ -31,8 +32,8 @@ export default function Description({
             <div className="absolute inset-0 bg-black/50 z-10"></div>
 
             {/* 중앙 컨텐츠 */}
-            <div className="z-20 text-center text-white txt-wrap h-full">
-                <div className="title-wrap w-full h-full flex items-center justify-center">
+            <div className="z-20 text-white txt-wrap h-full">
+                <div className="title-wrap w-full h-full flex items-center justify-center text-center">
                     {titleImage ? (
                         <Image
                             width={200}
@@ -45,9 +46,20 @@ export default function Description({
                         <h1 className="text-white text-[27px] font-bold">{title}</h1>
                     )}
                 </div>
-                <div className="description-wrap w-full h-full flex items-center justify-center flex-col">
-                    <h1 className="text-[27px] font-bold mt-4">{descriptionTitle}</h1>
-                    <h4 className="mt-2">{description}</h4>
+                <div className="description-wrap h-full flex flex-col mx-5 gap-8 py-20">
+                    <div className="flex flex-col flex-1">
+                        <h1 className="text-[27px] font-bold mt-4">{descriptionTitle}</h1>
+                        <h4 className="mt-2">{description}</h4>
+                    </div>
+                    <ArrowIconButton
+                        text="MORE"
+                        href={{
+                            pathname: "/Detail",
+                            query: {
+                                image: "/images/main/jeogjae_architect.png"
+                            }
+                        }}
+                    />
                 </div>
             </div>
         </div>

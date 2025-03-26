@@ -8,32 +8,32 @@ import {
 
 function AccordionReserve() {
     return (
-        <div className="overflow-x-auto shadow-md rounded-lg text-white">
+        <div className="overflow-x-auto shadow-md rounded-lg">
             <table className="min-w-full text-left table-auto">
                 <tbody>
                     <tr>
-                        <td className="pl-4 py-3 border-t-[0.3px] border-b-[0.3px] font-normal">체크인</td>
-                        <td className="px-4 py-3 border-t-[0.3px] border-b-[0.3px] font-normal">15:00</td>
+                        <td className="pl-4 py-3 border-white border-t-[0.3px] border-b-[0.3px] font-normal">체크인</td>
+                        <td className="px-4 py-3 border-white border-t-[0.3px] border-b-[0.3px] font-normal">15:00</td>
                     </tr>
                     <tr>
-                        <td className="pl-4 py-3 border-b-[0.3px] font-normal">체크아웃</td>
-                        <td className="px-4 py-3 border-b-[0.3px] font-normal">11:00</td>
+                        <td className="pl-4 py-3 border-white border-b-[0.3px] font-normal">체크아웃</td>
+                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">11:00</td>
                     </tr>
                     <tr>
-                        <td className="pl-4 py-3 border-b-[0.3px] font-normal">기준 인원</td>
-                        <td className="px-4 py-3 border-b-[0.3px] font-normal">4인 (최대 인원 4인)</td>
+                        <td className="pl-4 py-3 border-white border-b-[0.3px] font-normal">기준 인원</td>
+                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">4인 (최대 인원 4인)</td>
                     </tr>
                     <tr>
-                        <td className="pl-4 py-3 border-b-[0.3px] font-normal">객실타입</td>
-                        <td className="px-4 py-3 border-b-[0.3px] font-normal">독채</td>
+                        <td className="pl-4 py-3 border-white border-b-[0.3px] font-normal">객실타입</td>
+                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">독채</td>
                     </tr>
                     <tr>
-                        <td className="pl-4 py-3 border-b-[0.3px] font-normal">객실면적</td>
-                        <td className="px-4 py-3 border-b-[0.3px] font-normal">39.5</td>
+                        <td className="pl-4 py-3 border-white border-b-[0.3px] font-normal">객실면적</td>
+                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">39.5</td>
                     </tr>
                     <tr>
-                        <td className="pl-4 py-3 border-b-[0.3px] font-normal">객실구성</td>
-                        <td className="px-4 py-3 border-b-[0.3px] font-normal">객실 2개, 화장실 2개</td>
+                        <td className="pl-4 py-3 border-white border-b-[0.3px] font-normal">객실구성</td>
+                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">객실 2개, 화장실 2개</td>
                     </tr>
                     <tr>
                         <td className="pl-4 py-3 font-normal">침대</td>
@@ -47,20 +47,20 @@ function AccordionReserve() {
 
 function AccordionPrice() {
     return (
-        <div className="flex flex-col gap-8 overflow-x-auto text-white">
+        <div className="flex flex-col gap-8 overflow-x-auto">
             <table className="min-w-full text-left table-auto">
                 <thead>
                     <tr>
-                        <th className="pl-3 py-3 border-b-[0.3px] font-normal">날짜</th>
-                        <th className="px-4 py-3 border-b-[0.3px] font-normal">주중(일-목)</th>
-                        <th className="px-4 py-3 border-b-[0.3px] font-normal">주말(금-토)</th>
+                        <th className="pl-3 py-3 border-white border-b-[0.3px] font-normal">날짜</th>
+                        <th className="px-4 py-3 border-white border-b-[0.3px] font-normal">주중(일-목)</th>
+                        <th className="px-4 py-3 border-white border-b-[0.3px] font-normal">주말(금-토)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td className="pl-3 py-3 border-b-[0.3px] font-normal">4인 기준</td>
-                        <td className="px-4 py-3 border-b-[0.3px] font-normal">550,000원</td>
-                        <td className="px-4 py-3 border-b-[0.3px] font-normal">800,000원</td>
+                        <td className="pl-3 py-3 border-white border-b-[0.3px] font-normal">4인 기준</td>
+                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">550,000원</td>
+                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">800,000원</td>
                     </tr>
                 </tbody>
             </table>
@@ -86,7 +86,7 @@ function AccordionPrice() {
 
 function AccordionAmenities() {
     return (
-        <ul className="flex flex-col gap-4 text-white">
+        <ul className="flex flex-col gap-4">
             <li className="flex items-start">
                 <span className="mr-2">•</span>
                 WIFI/블루투스  스피커/에어컨/공기청정기/인덕션<br />
@@ -107,7 +107,7 @@ function AccordionAmenities() {
 
 function AccordionLocation() {
     return (
-        <div className="flex flex-col gap-4 text-white">
+        <div className="flex flex-col gap-4">
             <div className="">
                 서울특별시 종로구 삼청로 35-83, 더 워터하우스<br />
                 주차공간은 마련되어 있지 않습니다. 근처 유료주차장을<br />

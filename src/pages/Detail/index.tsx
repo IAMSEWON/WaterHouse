@@ -89,7 +89,7 @@ export default function Detail() {
         <>
             <div className="detail-wrap flex relative flex-col z-30">
                 <NavBar isMenu={isMenu} onMenuHandler={handleMenuToggle} />
-                <div className="h-lvh flex relative flex-col">
+                <div className="h-lvh flex relative flex-col overflow-hidden ">
 
                     {/* TOP 그라디언트 블랙 */}
                     <div className="absolute inset-0 z-10 bg-gradient-to-b bg-gradient-from-b from-black via-transparent to- 
@@ -102,7 +102,7 @@ export default function Detail() {
                         alt="로고 이미지"
                         width={1920}
                         height={1080}
-                        className="z-0 absolute"
+                        className="z-0 absolute h-full"
                     />
                     <div className="flex z-20 flex-1 items-center justify-center flex-col mt-[132px]">
                         <h1 className="main-title-text text-2xl font-bold text-center flex-1 text-white">머무름 이상의 경험</h1>
@@ -114,10 +114,10 @@ export default function Detail() {
                     </div>
 
                     {/* BOTTOM 그라디언트 블랙 */}
-                    <div className="absolute inset-0 z-10 bg-gradient-to-t bg-gradient-from-t from-black via-transparent to- 
-                black opacity-100 h-200" />
-                    <div className="absolute inset-0 z-10 bg-gradient-to-t bg-gradient-from-t from-black via-transparent to- 
-                black opacity-80 h-120" />
+                    <div className="absolute inset-[-1px] z-10 bg-gradient-to-t bg-gradient-from-t from-black via-transparent to- 
+                black opacity-100 " />
+                    <div className="absolute inset-[-2px] z-10 bg-gradient-to-t bg-gradient-from-t from-black via-transparent to- 
+                black opacity-80 " />
                 </div>
                 <div className="flex flex-col">
                     {
