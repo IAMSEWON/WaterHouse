@@ -16,9 +16,11 @@ import { mainData } from "@/data/main";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const mainImageRef = useRef<HTMLImageElement>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // 비디오 요소
+  const videoRef = useRef<HTMLVideoElement>(null);
 
 
 
@@ -31,6 +33,9 @@ export default function Home() {
 
   const handleSplashStart = () => {
     setIsSplashTextStart(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
   };
 
 
@@ -46,14 +51,14 @@ export default function Home() {
     setIsMenu(!isMenu);
   };
 
+  // 비디오 fadeIn 애니메이션
   const handleMainScrollStart = () => {
-    if (!mainImageRef.current) return;
+    if (!videoRef.current) return;
 
-    mainImageRef.current.classList.remove("hidden");
 
     const gt = gsap.timeline();
 
-    gt.fromTo(mainImageRef.current, {
+    gt.fromTo(videoRef.current, {
       opacity: 0,
     }, {
       opacity: 1,
@@ -63,19 +68,24 @@ export default function Home() {
   }
 
 
+  // 백그라운드 opacity 애니메이션
   const handleMainScrollEnd = () => {
-    if (!mainImageRef.current) return;
+    if (!videoRef.current) return;
+    handleSplashComplete();
 
     // 2초 지연 후에 애니메이션 실행
     // 지연 호출을 변수에 저장
-    gsap.delayedCall(2, () => {
+    gsap.delayedCall(1, () => {
       const gt = gsap.timeline();
       gt.fromTo(
-        mainImageRef.current,
+        videoRef.current,
         { opacity: 1 },
         { opacity: 0.3, duration: 2, ease: "power2.out" }
+      ).to(
+        '.main-first-section',
+        { opacity: 1, duration: 2, ease: "power2.out" },
+        "<"
       );
-      handleSplashComplete();
     });
   };
 
@@ -138,17 +148,19 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-black">
       <Splash animation={true} isMenu={isMenu} onMenuTextStart={handleSplashStart} onComplete={handleSplashEnd} onMenuHandler={() => handleMenuToggle()} />
       <Menu isOpen={isMenu} onClose={handleMenuToggle} />
-      <Image
-        width={1920}
-        height={1080}
-        className="fixed top-0 left-0 w-full h-full z-0 hidden"
-        src="/images/main/main_image_01.png"
-        alt="배경 이미지"
-        ref={mainImageRef}
-      />
+
+      <video ref={videoRef} className="fixed top-0 left-0 w-full h-full z-0" width="1920" height="1080" loop controls={false} preload="none" playsInline muted >
+        <source src="/videos/sample_video_03.mp4" type="video/mp4" />
+        <track
+          src="/videos/sample_video_03.mp4"
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      </video>
 
       {isSplash && (
-        <div className="flex flex-col flex-1 overflow-y-auto z-10">
+        <div className="main-first-section flex flex-col flex-1 overflow-y-auto z-10 opacity-0">
           <div className="flex flex-col gap-[72px] mx-[10px]">
             <div className="mt-[180%] whitespace-pre-line text-[15.5px] leading-7 tracking-[-5%] font-normal text-white">
               더 워터하우스
