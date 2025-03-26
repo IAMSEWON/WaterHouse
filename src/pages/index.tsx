@@ -199,7 +199,7 @@ export default function Home() {
   }, [isSplash]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-black">
+    <div className="flex flex-col min-h-dvh bg-black">
       <Splash animation={true} isMenu={isMenu} onMenuTextStart={handleSplashStart} onComplete={handleSplashEnd} onMenuHandler={() => handleMenuToggle()} />
       <Menu isOpen={isMenu} onClose={handleMenuToggle} />
 

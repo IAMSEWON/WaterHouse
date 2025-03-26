@@ -12,28 +12,28 @@ function AccordionReserve() {
             <table className="min-w-full text-left table-auto">
                 <tbody>
                     <tr>
-                        <td className="pl-4 py-3 border-white border-t-[0.3px] border-b-[0.3px] font-normal">체크인</td>
-                        <td className="px-4 py-3 border-white border-t-[0.3px] border-b-[0.3px] font-normal">15:00</td>
+                        <td className="pl-4 py-3 border-t-white border-t-[0.3px] border-b-[0.3px] font-normal">체크인</td>
+                        <td className="px-4 py-3 border-t-white border-t-[0.3px] border-b-[0.3px] font-normal">15:00</td>
                     </tr>
                     <tr>
-                        <td className="pl-4 py-3 border-white border-b-[0.3px] font-normal">체크아웃</td>
-                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">11:00</td>
+                        <td className="pl-4 py-3 border-b-white border-b-[0.3px] font-normal">체크아웃</td>
+                        <td className="px-4 py-3 border-b-white border-b-[0.3px] font-normal">11:00</td>
                     </tr>
                     <tr>
-                        <td className="pl-4 py-3 border-white border-b-[0.3px] font-normal">기준 인원</td>
-                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">4인 (최대 인원 4인)</td>
+                        <td className="pl-4 py-3 border-b-white border-b-[0.3px] font-normal">기준 인원</td>
+                        <td className="px-4 py-3 border-b-white border-b-[0.3px] font-normal">4인 (최대 인원 4인)</td>
                     </tr>
                     <tr>
-                        <td className="pl-4 py-3 border-white border-b-[0.3px] font-normal">객실타입</td>
-                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">독채</td>
+                        <td className="pl-4 py-3 border-b-white border-b-[0.3px] font-normal">객실타입</td>
+                        <td className="px-4 py-3 border-b-white border-b-[0.3px] font-normal">독채</td>
                     </tr>
                     <tr>
-                        <td className="pl-4 py-3 border-white border-b-[0.3px] font-normal">객실면적</td>
-                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">39.5</td>
+                        <td className="pl-4 py-3 border-b-white border-b-[0.3px] font-normal">객실면적</td>
+                        <td className="px-4 py-3 border-b-white border-b-[0.3px] font-normal">39.5</td>
                     </tr>
                     <tr>
-                        <td className="pl-4 py-3 border-white border-b-[0.3px] font-normal">객실구성</td>
-                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">객실 2개, 화장실 2개</td>
+                        <td className="pl-4 py-3 border-b-white border-b-[0.3px] font-normal">객실구성</td>
+                        <td className="px-4 py-3 border-b-white border-b-[0.3px] font-normal">객실 2개, 화장실 2개</td>
                     </tr>
                     <tr>
                         <td className="pl-4 py-3 font-normal">침대</td>
@@ -51,16 +51,16 @@ function AccordionPrice() {
             <table className="min-w-full text-left table-auto">
                 <thead>
                     <tr>
-                        <th className="pl-3 py-3 border-white border-b-[0.3px] font-normal">날짜</th>
-                        <th className="px-4 py-3 border-white border-b-[0.3px] font-normal">주중(일-목)</th>
-                        <th className="px-4 py-3 border-white border-b-[0.3px] font-normal">주말(금-토)</th>
+                        <th className="pl-3 py-3 border-b-white border-b-[0.3px] font-normal">날짜</th>
+                        <th className="px-4 py-3 border-b-white border-b-[0.3px] font-normal">주중(일-목)</th>
+                        <th className="px-4 py-3 border-b-white border-b-[0.3px] font-normal">주말(금-토)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td className="pl-3 py-3 border-white border-b-[0.3px] font-normal">4인 기준</td>
-                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">550,000원</td>
-                        <td className="px-4 py-3 border-white border-b-[0.3px] font-normal">800,000원</td>
+                        <td className="pl-3 py-3 border-b-white border-b-[0.3px] font-normal">4인 기준</td>
+                        <td className="px-4 py-3 border-b-white border-b-[0.3px] font-normal">550,000원</td>
+                        <td className="px-4 py-3 border-b-white border-b-[0.3px] font-normal">800,000원</td>
                     </tr>
                 </tbody>
             </table>
