@@ -88,7 +88,7 @@ export default function Home() {
         "<"
       ).to(
         '.main-first-section-text',
-        { marginTop: '50%', duration: 2, ease: "power2.out" },
+        { y: '0', duration: 2, ease: "power2.out" },
         "<"
       )
     });
@@ -198,6 +198,16 @@ export default function Home() {
     };
   }, [isSplash]);
 
+
+  useEffect(() => {
+
+    window.addEventListener("resize", () => { console.log('hello') });
+
+    return () => {
+      window.removeEventListener("resize", ScrollTrigger.update);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col min-h-dvh bg-black">
       <Splash animation={true} isMenu={isMenu} onMenuTextStart={handleSplashStart} onComplete={handleSplashEnd} onMenuHandler={() => handleMenuToggle()} />
@@ -216,35 +226,37 @@ export default function Home() {
       {isSplash && (
         <div className="main-first-section flex flex-col flex-1 overflow-y-auto z-10 opacity-0">
           <div className="flex flex-col gap-[72px] mx-[10px]">
-            <div className="main-first-section-text mt-[120%] whitespace-pre-line text-[15.5px] leading-7 tracking-[-5%] font-normal text-white">
-              더 워터하우스
-              <br />
-              물, 가장 자연스러운 움직임
-              <br />
-              <br />
-              <br />
-              가장 자연스러운 서울의 모습이 남아있는 북촌
-              <br />
-              한옥마을에 인왕산의 사계절을 자연스럽게
-              <br />
-              품은 집을 짓다.
-              <br />
-              <br />
-              <br />
-              더 워터하우스는 흐르는 물처럼 잔잔하고 유연한
-              <br />
-              정취 속에서 나만의 흐름을 찾을 수 있는 곳입니다.
-              장소의 본질을 고민한 더 워터하우스는 여러 창작자들의 조화로운 감각으로 엮은 영감의 공간을 선보입니다.
+            <div className="main-first-section-text flex flex-col mt-[50%] translate-y-1/2 gap-[72px]">
+              <div className=" whitespace-pre-line text-[15.5px] leading-7 tracking-[-5%] font-normal text-white">
+                더 워터하우스
+                <br />
+                물, 가장 자연스러운 움직임
+                <br />
+                <br />
+                <br />
+                가장 자연스러운 서울의 모습이 남아있는 북촌
+                <br />
+                한옥마을에 인왕산의 사계절을 자연스럽게
+                <br />
+                품은 집을 짓다.
+                <br />
+                <br />
+                <br />
+                더 워터하우스는 흐르는 물처럼 잔잔하고 유연한
+                <br />
+                정취 속에서 나만의 흐름을 찾을 수 있는 곳입니다.
+                장소의 본질을 고민한 더 워터하우스는 여러 창작자들의 조화로운 감각으로 엮은 영감의 공간을 선보입니다.
+              </div>
+              <ArrowIconButton
+                text="Book Now"
+                href={{
+                  pathname: "/Detail",
+                  query: {
+                    image: "/images/main/jeogjae_architect.png"
+                  }
+                }}
+              />
             </div>
-            <ArrowIconButton
-              text="Book Now"
-              href={{
-                pathname: "/Detail",
-                query: {
-                  image: "/images/main/jeogjae_architect.png"
-                }
-              }}
-            />
             <AccordionMenu />
             <EmailButton className="mt-[10%] mb-[60%] mx-2" />
           </div>
