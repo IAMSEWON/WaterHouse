@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ArrowIconButton from "./ArrowIconButton";
+import React from "react";
 
 type DescriptionProps = {
     title: string;
@@ -43,12 +44,25 @@ export default function Description({
                             className="mb-4"
                         />
                     ) : (
-                        <h1 className="text-white text-[27px] font-bold">{title}</h1>
+                        <h1 className="text-white text-[27px] font-bold">
+                            {title.split("\n").map((line, index) => (
+                                <React.Fragment key={index}>
+                                    {line}
+                                    <br />
+                                </React.Fragment>
+                            ))}</h1>
                     )}
                 </div>
                 <div className="description-wrap h-full flex flex-col mx-5 gap-8 py-20">
-                    <div className="flex flex-col flex-1">
-                        <h1 className="text-[27px] font-bold mt-4">{descriptionTitle}</h1>
+                    <div className="flex flex-col flex-1 gap-8">
+                        <p className="text-[27px] font-bold mt-4">
+                            {descriptionTitle.split("\n").map((line, index) => (
+                                <React.Fragment key={index}>
+                                    {line}
+                                    <br />
+                                </React.Fragment>
+                            ))}
+                        </p>
                         <h4 className="mt-2">{description}</h4>
                     </div>
                     <ArrowIconButton
