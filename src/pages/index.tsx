@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
 
 import ArrowIconButton from "@/components/ArrowIconButton";
 import Splash from "@/components/Splash";
@@ -89,30 +90,50 @@ export default function Home() {
     });
   };
 
+
   const handleSectionScroll = () => {
     if (!containerRef.current) return;
 
 
-    const gt = gsap.timeline();
+    // const gt = gsap.timeline();
 
     const sections = containerRef.current.querySelectorAll(".description-section");
 
-    sections.forEach((section) => {
-      gt.to(section, {
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "200% bottom",
-          scrub: true,
-          pin: true,
-          pinSpacing: false,
-          markers: true,
-        },
-      }).to(".title-wrap", {
-        y: "-50%",
-      })
 
+    // 모든 section의 opacity를 0.5로 설정
+    sections.forEach((section) => {
+      gsap.set(section, {
+        opacity: 0,
+      });
+
+      // section 안의 .description-wrap의 x값을 -50%로 설정
+      gsap.set(section.querySelector(".description-wrap"), {
+        // x: "-50%",
+        // bottom:"-100%"
+      });
+    });
+
+    gsap.set(".desc-0", {
+      opacity: 1,
+    });
+
+    // scrollTrigger로 애니메이션 설정
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: ".scroll-ani-wrap",
+        start: "top top", // .scroll-ani-wrap의 top이 화면 top에 도달할 때
+        end: "100% bottom", // .scroll-ani-wrap의 bottom이 화면 bottom에 도달할 때
+        scrub: true,
+        pin: true, // .scroll-ani-wrap을 고정시킴
+        pinSpacing: false,
+        markers: true, // 디버깅용 마커 표시
+      }
     })
+      .to(".desc-0 .txt-wrap", {
+        y: "-100%"
+      }).to(".desc-0", {
+        opacity: 0,
+      });
 
   }
 
@@ -194,9 +215,9 @@ export default function Home() {
             <AccordionMenu />
             <EmailButton className="mt-[10%] mb-[60%] mx-2" />
           </div>
-          <div ref={containerRef} className="flex flex-col w-full">
+          <div ref={containerRef} className="flex flex-col w-full scroll-ani-wrap">
             {mainData.map((item, index) => (
-              <div key={item.title} className="description-section h-screen">
+              <div key={item.title} className={`description-section desc-${index} h-screen`}>
                 <Description {...item} index={index} />
               </div>
             ))}

@@ -31,8 +31,8 @@ export default function Description({
             <div className="absolute inset-0 bg-black/50 z-10"></div>
 
             {/* 중앙 컨텐츠 */}
-            <div className="z-20 text-center text-white">
-                <div className="title-wrap absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="z-20 text-center text-white txt-wrap h-full">
+                <div className="title-wrap w-full h-full flex items-center justify-center">
                     {titleImage ? (
                         <Image
                             width={200}
@@ -45,7 +45,7 @@ export default function Description({
                         <h1 className="text-white text-[27px] font-bold">{title}</h1>
                     )}
                 </div>
-                <div className="description-wrap absolute top-full">
+                <div className="description-wrap w-full h-full flex items-center justify-center flex-col">
                     <h1 className="text-[27px] font-bold mt-4">{descriptionTitle}</h1>
                     <h4 className="mt-2">{description}</h4>
                 </div>
