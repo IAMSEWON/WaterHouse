@@ -16,7 +16,6 @@ export default function Description({
     descriptionTitle,
     backgroundImage,
     description,
-    index
 }: DescriptionProps) {
     return (
         <div className="relative border w-full h-screen flex flex-col justify-center items-center overflow-hidden">

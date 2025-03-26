@@ -128,9 +128,9 @@ function AccordionLocation() {
 
 
 
-export function AccordionMenu({ onValueChange }: { onValueChange: (value: string) => void }) {
+export function AccordionMenu() {
     return (
-        <Accordion type="single" collapsible className="w-full" onValueChange={onValueChange}>
+        <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
                 <AccordionTrigger>예약안내</AccordionTrigger>
                 <AccordionContent>

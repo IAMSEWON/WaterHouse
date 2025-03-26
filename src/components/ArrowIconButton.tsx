@@ -1,17 +1,19 @@
 
+import { Url } from "next/dist/shared/lib/router/router";
 import Image from "next/image";
+import Link from "next/link";
 
 type ArrowIconButtonProps = {
     text: string;
-    onClick: () => void;
+    href: Url;
     className?: string;
 }
 
-export default function ArrowIconButton({ text, onClick, className }: ArrowIconButtonProps) {
+export default function ArrowIconButton({ text, href, className }: ArrowIconButtonProps) {
 
     return (
 
-        <button onClick={onClick} className="flex flex-row gap-3 items-center">
+        <Link href={href} className="flex flex-row gap-3 items-center">
             <div className={`text-[17px] ${className}`}>{text}</div>
             <Image
                 src="/images/more_arrow.png"
@@ -19,6 +21,6 @@ export default function ArrowIconButton({ text, onClick, className }: ArrowIconB
                 width={55}
                 height={9.5}
             />
-        </button>
+        </Link>
     )
 }

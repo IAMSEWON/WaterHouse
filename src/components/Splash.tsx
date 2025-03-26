@@ -1,15 +1,17 @@
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import NavBar from "./NavBar";
 
 type SplashProps = {
     animation: boolean;
     isMenu: boolean;
     onMenuHandler: () => void;
+    onMenuTextStart: () => void;
     onComplete: () => void;
 }
 
-export default function Splash({ animation, isMenu, onComplete, onMenuHandler }: SplashProps) {
+export default function Splash({ animation, isMenu, onComplete, onMenuTextStart, onMenuHandler }: SplashProps) {
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +37,6 @@ export default function Splash({ animation, isMenu, onComplete, onMenuHandler }:
                 {
                     opacity: 1, duration: 2, ease: "power2.out", onComplete: () => {
 
-                        containerRef.current?.classList.add("mt-[76px]")
                         containerRef.current?.classList.remove("items-center");
 
                     }
@@ -50,7 +51,10 @@ export default function Splash({ animation, isMenu, onComplete, onMenuHandler }:
             .fromTo(
                 ".nav-wrap",
                 { opacity: 0 },
-                { opacity: 1, duration: 2, ease: "power2.out" },
+                {
+                    opacity: 1, duration: 2, ease: "power2.out",
+                    onStart: onMenuTextStart,
+                },
                 ">" // 끝난 후 실행
             )
             .to(".nav-name", { fontSize: "1.063rem", left: "25%", duration: 1, ease: "power2.out" })
@@ -93,20 +97,7 @@ export default function Splash({ animation, isMenu, onComplete, onMenuHandler }:
                 <h1 className="text-3xl font-bold">THE WATERHOUSE</h1>
                 <h4>Retreat of Creative Inspiration</h4>
             </div>
-            <div className="nav-wrap fixed w-full flex items-center">
-                <button className="nav-name text-4xl font-bold absolute left-1/2 -translate-x-1/2 text-center w-full">
-                    <h1>THE WATERHOUSE</h1>
-                </button>
-                {/* 메뉴 버튼 */}
-                <button className="nav-menu text-2xl absolute hidden opacity-0 right-[15px]" onClick={() => onMenuHandler()}>
-                    <Image
-                        src={isMenu ? "/images/menu_close.png" : "/images/menu_bar.png"}
-                        alt="로고 이미지"
-                        width={33}
-                        height={13}
-                    />
-                </button>
-            </div>
+            <NavBar animation isMenu={isMenu} onMenuHandler={onMenuHandler} />
         </div>
     )
 }

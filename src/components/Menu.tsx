@@ -1,56 +1,55 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import EmailButton from "./EmailButton";
-import { ArrowDownIcon, ChevronDown, Globe } from "lucide-react";
+import { ChevronDown, Globe } from "lucide-react";
 
 interface MenuProps {
     isOpen: boolean;
     onClose: () => void;
 }
 
-const menuItems = [
-    "About",
-    "Reservation",
-    "Contact",
-    "오시는 길"
-];
-
+const menuItems = ["About", "Reservation", "Contact", "오시는 길"];
 
 const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
     const menuRef = useRef<HTMLDivElement | null>(null);
+    const [isFirstRender, setIsFirstRender] = useState(true);
 
     useEffect(() => {
+        // 처음 렌더링 이후로만 애니메이션 실행
+        if (isFirstRender) {
+            setIsFirstRender(false);
+            return;
+        }
+
         if (!menuRef.current) return;
 
-        console.log("isOpen", isOpen);
-
         if (isOpen) {
+            menuRef.current.classList.remove("hidden");
             gsap.fromTo(
                 menuRef.current,
                 { xPercent: 100 },
                 { xPercent: 0, duration: 0.6, ease: "power3.out" }
             );
-            document.body.style.overflow = "hidden"; // 스크롤 막기
+            document.body.style.overflow = "hidden";
         } else {
             gsap.fromTo(
                 menuRef.current,
                 { xPercent: 0 },
                 { xPercent: 100, duration: 0.6, ease: "power3.in" }
             );
-            // gsap.to(menuRef.current, { xPercent: 100, duration: 0.6, ease: "power3.in" });
-            document.body.style.overflow = "auto"; // 스크롤 다시 활성화
+            document.body.style.overflow = "auto";
         }
 
         return () => {
-            document.body.style.overflow = "auto"; // 컴포넌트 언마운트 시 초기화
+            document.body.style.overflow = "auto";
         };
     }, [isOpen]);
 
     return (
         <div
             ref={menuRef}
-            className="fixed top-0 right-0 w-full h-full z-50 flex flex-col overflow-hidden pl-2 pr-2 bg-black"
+            className="fixed top-0 right-0 w-full h-full z-50 flex flex-col overflow-hidden pl-3 pr-2 bg-black hidden"
         >
             <Image
                 src="/images/main/main_image_01.png"
@@ -58,38 +57,30 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
                 layout="fill"
                 objectFit="cover"
                 quality={80}
-                className="absolute top-0 left-0 -z-10 opacity-80"
+                className="absolute top-0 left-0 -z-10 opacity-30"
             />
-            {/* <div className="absolute inset-0 bg-[#262727]/80"></div> */}
-            <div className="flex items-center justify-between w-full mt-[calc(4rem)]">
+            <div className="flex items-center justify-between w-full flex-shrink my-14">
                 <h1 className="text-3xl font-bold">THE WATERHOUSE</h1>
-                <button
-                    onClick={onClose}
-                    className=""
-                >
+                <button onClick={onClose}>
                     <Image src="/images/menu_close.png" alt="메뉴 닫기 버튼" width={43} height={43} />
                 </button>
             </div>
-            <ul className="text-white text-3xl space-y-[26px] z-20 mt-[calc(4.375rem)] font-normal">
+            <ul className="text-white text-3xl space-y-[26px] z-20 font-normal flex-grow justify-center flex flex-col">
                 {menuItems.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li className="font-normal" key={index}>{item}</li>
                 ))}
             </ul>
-            <div className="mt-[calc(3.625rem)]">
+            <div className="mt-[calc(3.625rem)] flex-grow">
                 <EmailButton />
             </div>
-            {/* 가로 라인 */}
-            <div className="w-full h-[0.75px] bg-white mt-[calc(3.313rem)]" />
-            {/* 인스타그램, 페이스북 */}
+            <div className="w-full h-[0.75px] bg-white" />
             <div className="flex flex-col items-start mt-[calc(1.625rem)] space-y-2">
-                <button>Instagram</button>
-                <button>FaceBook</button>
+                <button className="text-white text-[18px]">Instagram</button>
+                <button className="text-white text-[18px]">FaceBook</button>
             </div>
-            {/* 언어 설정 */}
-            <button className="flex flex-row items-center justify-center mt-[calc(1.625rem)] gap-1">
+            <button className="flex flex-row items-center justify-center gap-1 flex-grow">
                 <Globe width={20} height={20} className="text-white" />
                 <div className="text-[16px] font-bold ml-1">EN</div>
-                {/* 화살 아래아이콘 lucide-react */}
                 <ChevronDown width={20} height={20} className="text-white" />
             </button>
         </div>

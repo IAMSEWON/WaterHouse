@@ -8,24 +8,81 @@ import Menu from "@/components/Menu";
 
 import { AccordionMenu } from "@/components/AccordionMenu";
 import Image from "next/image";
+import EmailButton from "@/components/EmailButton";
+import Footer from "@/components/Footer";
+import Description from "@/components/Description";
+import { mainData } from "@/data/main";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const mainImageRef = useRef<HTMLImageElement>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
+
+
+
+  const [isSplashTextStart, setIsSplashTextStart] = useState(false);
+  const [isSplashTextEnd, setIsSplashTextEnd] = useState(false);
   const [isSplash, setIsSplash] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
+
+
+
+  const handleSplashStart = () => {
+    setIsSplashTextStart(true);
+  };
+
+
+  const handleSplashEnd = () => {
+    setIsSplashTextEnd(true);
+  };
 
   const handleSplashComplete = () => {
     setIsSplash(true);
   };
+
   const handleMenuToggle = () => {
     setIsMenu(!isMenu);
   };
 
-  useEffect(() => {
+  const handleMainScrollStart = () => {
+    if (!mainImageRef.current) return;
+
+    mainImageRef.current.classList.remove("hidden");
+
+    const gt = gsap.timeline();
+
+    gt.fromTo(mainImageRef.current, {
+      opacity: 0,
+    }, {
+      opacity: 1,
+      duration: 2,
+      ease: "power2.out"
+    })
+  }
+
+
+  const handleMainScrollEnd = () => {
+    if (!mainImageRef.current) return;
+
+    // 2초 지연 후에 애니메이션 실행
+    // 지연 호출을 변수에 저장
+    gsap.delayedCall(2, () => {
+      const gt = gsap.timeline();
+      gt.fromTo(
+        mainImageRef.current,
+        { opacity: 1 },
+        { opacity: 0.3, duration: 2, ease: "power2.out" }
+      );
+      handleSplashComplete();
+    });
+  };
+
+  const handleSectionScroll = () => {
     if (!containerRef.current) return;
+
+
     const gt = gsap.timeline();
 
     const sections = containerRef.current.querySelectorAll(".description-section");
@@ -47,6 +104,30 @@ export default function Home() {
 
     })
 
+  }
+
+
+
+
+  useEffect(() => {
+    if (!isSplashTextStart) return;
+
+    handleMainScrollStart();
+
+  }, [isSplashTextStart]);
+
+
+  useEffect(() => {
+    if (!isSplashTextEnd) return;
+
+    handleMainScrollEnd();
+
+  }, [isSplashTextEnd]);
+
+  useEffect(() => {
+    if (!isSplash) return;
+
+    handleSectionScroll();
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -55,12 +136,21 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-black">
-      <Splash animation={false} isMenu={isMenu} onComplete={handleSplashComplete} onMenuHandler={() => handleMenuToggle()} />
+      <Splash animation={true} isMenu={isMenu} onMenuTextStart={handleSplashStart} onComplete={handleSplashEnd} onMenuHandler={() => handleMenuToggle()} />
       <Menu isOpen={isMenu} onClose={handleMenuToggle} />
-      {!isSplash && (
-        <div className="flex flex-col flex-1 overflow-y-auto">
+      <Image
+        width={1920}
+        height={1080}
+        className="fixed top-0 left-0 w-full h-full z-0 hidden"
+        src="/images/main/main_image_01.png"
+        alt="배경 이미지"
+        ref={mainImageRef}
+      />
+
+      {isSplash && (
+        <div className="flex flex-col flex-1 overflow-y-auto z-10">
           <div className="flex flex-col gap-[72px] mx-[10px]">
-            <div className="mt-[353px] whitespace-pre-line text-[15.5px] leading-7 tracking-[-5%] font-normal text-white">
+            <div className="mt-[180%] whitespace-pre-line text-[15.5px] leading-7 tracking-[-5%] font-normal text-white">
               더 워터하우스
               <br />
               물, 가장 자연스러운 움직임
@@ -82,29 +172,35 @@ export default function Home() {
             </div>
             <ArrowIconButton
               text="Book Now"
-              onClick={() => console.log("Book Now clicked")}
+              href={{
+                pathname: "/Detail",
+                query: {
+                  image: "/images/main/jeogjae_architect.png"
+                }
+              }}
             />
-            <AccordionMenu onValueChange={(value) => {
-
-              ScrollTrigger.refresh()
-            }} />
+            <AccordionMenu />
+            <EmailButton className="mt-[10%] mb-[60%] mx-2" />
           </div>
-          {/* <div ref={containerRef} className="flex flex-col w-full">
+          <div ref={containerRef} className="flex flex-col w-full">
             {mainData.map((item, index) => (
               <div key={item.title} className="description-section h-screen">
                 <Description {...item} index={index} />
               </div>
             ))}
-          </div> */}
+          </div>
+          <EmailButton className="mt-[56px] mb-[218px] mx-3" />
+          {/* 지도 이미지 */}
+          <Image
+            width={1920}
+            height={1080}
+            src="/images/main_map.png"
+            alt="위치"
+            className="z-50"
+          />
+          <Footer />
         </div>
       )}
-      {/* 지도 이미지 */}
-      <Image
-        width={1920}
-        height={1080}
-        src="/images/main_map.png"
-        alt="위치"
-      />
     </div>
   );
 }
