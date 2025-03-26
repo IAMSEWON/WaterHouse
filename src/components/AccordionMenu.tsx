@@ -8,7 +8,7 @@ import {
 
 function AccordionReserve() {
     return (
-        <div className="overflow-x-auto shadow-md rounded-lg">
+        <div className="overflow-x-auto shadow-md rounded-lg text-white">
             <table className="min-w-full text-left table-auto">
                 <tbody>
                     <tr>
@@ -47,7 +47,7 @@ function AccordionReserve() {
 
 function AccordionPrice() {
     return (
-        <div className="flex flex-col gap-8 overflow-x-auto">
+        <div className="flex flex-col gap-8 overflow-x-auto text-white">
             <table className="min-w-full text-left table-auto">
                 <thead>
                     <tr>
@@ -86,7 +86,7 @@ function AccordionPrice() {
 
 function AccordionAmenities() {
     return (
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-4 text-white">
             <li className="flex items-start">
                 <span className="mr-2">•</span>
                 WIFI/블루투스  스피커/에어컨/공기청정기/인덕션<br />
@@ -107,7 +107,7 @@ function AccordionAmenities() {
 
 function AccordionLocation() {
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 text-white">
             <div className="">
                 서울특별시 종로구 삼청로 35-83, 더 워터하우스<br />
                 주차공간은 마련되어 있지 않습니다. 근처 유료주차장을<br />

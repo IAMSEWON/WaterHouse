@@ -105,10 +105,10 @@ export default function Detail() {
                         className="z-0 absolute"
                     />
                     <div className="flex z-20 flex-1 items-center justify-center flex-col mt-[132px]">
-                        <h1 className="main-title-text text-2xl font-bold text-center flex-1">머무름 이상의 경험</h1>
+                        <h1 className="main-title-text text-2xl font-bold text-center flex-1 text-white">머무름 이상의 경험</h1>
                         <div className="flex flex-col gap-16 items-center justify-end mb-10 mx-4">
-                            <button className="book-button w-[120px] border border-white rounded-full px-3 py-1 font-bold text-lg">Book Now</button>
-                            <p className="main-desc-text flex-1 text-center flex-shrink-0 text-[15px] leading-6 font-semibold">커다란 창 밖에 펼쳐진 풍경은 마치 한 폭의 작품을 감상하는 듯 한 느낌을 주며, 시선과 시점을 고려한 설계로 웅장한 능선과 계절의 아름다움을 더욱 풍성하게 만끽할 수 있습니다. 아티스트와 디자이너들의 감각적 조화는 영감 깃든 시간을
+                            <button className="book-button w-[120px] border border-white rounded-full px-3 py-1 font-bold text-lg text-white">Book Now</button>
+                            <p className="main-desc-text flex-1 text-center flex-shrink-0 text-[15px] leading-6 font-semibold text-white">커다란 창 밖에 펼쳐진 풍경은 마치 한 폭의 작품을 감상하는 듯 한 느낌을 주며, 시선과 시점을 고려한 설계로 웅장한 능선과 계절의 아름다움을 더욱 풍성하게 만끽할 수 있습니다. 아티스트와 디자이너들의 감각적 조화는 영감 깃든 시간을
                                 형성합니다.</p>
                         </div>
                     </div>
@@ -126,7 +126,7 @@ export default function Detail() {
                                 <div key={`${item.title}-${index}`} className={index === detailData.length - 1 ? "flex flex-col z-20 pt-20 gap-10" : "flex h-lvh flex-col z-20 py-20 gap-10"}>
                                     <div className="flex flex-col gap-6 mx-7">
                                         <h1 className="font-semibold text-[21px] text-white">{item.title}</h1>
-                                        <p className="text-[12px] leading-6 font-normal">{item.description}</p>
+                                        <p className="text-[12px] leading-6 font-normal text-white">{item.description}</p>
                                     </div>
                                     <div className="relative">
                                         <Image

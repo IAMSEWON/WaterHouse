@@ -60,7 +60,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
                 className="absolute top-0 left-0 -z-10 opacity-30"
             />
             <div className="flex items-center justify-between w-full flex-shrink my-14">
-                <h1 className="text-3xl font-bold">THE WATERHOUSE</h1>
+                <h1 className="text-3xl font-bold text-white">THE WATERHOUSE</h1>
                 <button onClick={onClose}>
                     <Image src="/images/menu_close.png" alt="메뉴 닫기 버튼" width={43} height={43} />
                 </button>
@@ -80,7 +80,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
             </div>
             <button className="flex flex-row items-center justify-center gap-1 flex-grow">
                 <Globe width={20} height={20} className="text-white" />
-                <div className="text-[16px] font-bold ml-1">EN</div>
+                <div className="text-[16px] font-bold ml-1 text-white">EN</div>
                 <ChevronDown width={20} height={20} className="text-white" />
             </button>
         </div>

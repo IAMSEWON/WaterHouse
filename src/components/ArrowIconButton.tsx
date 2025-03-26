@@ -14,7 +14,7 @@ export default function ArrowIconButton({ text, href, className }: ArrowIconButt
     return (
 
         <Link href={href} className="flex flex-row gap-3 items-center">
-            <div className={`text-[17px] ${className}`}>{text}</div>
+            <div className={`text-[17px] text-white ${className}`}>{text}</div>
             <Image
                 src="/images/more_arrow.png"
                 alt="로고 이미지"

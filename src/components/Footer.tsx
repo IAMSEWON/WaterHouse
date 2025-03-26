@@ -1,6 +1,6 @@
 function Footer() {
     return (
-        <div className="h-[531px] flex flex-col z-50 bg-black">
+        <div className="h-[531px] flex flex-col z-50 bg-black text-white">
             <div className="pt-[74px] mx-3">
                 <div className="flex flex-col gap-2 pb-[45px] text-[14px]">
                     <button className="text-start">About</button>

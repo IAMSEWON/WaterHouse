@@ -66,7 +66,7 @@ export default function Splash({ animation, isMenu, onComplete, onMenuTextStart,
         <div ref={containerRef} className="flex items-center justify-center bg-black mt-[76px] z-20">
             <div className="nav-wrap fixed w-full flex items-center">
                 <button className="nav-name text-[1.063rem] left-1/4 font-bold absolute -translate-x-1/2 text-center w-full">
-                    <h1>THE WATERHOUSE</h1>
+                    <h1 className="text-white">THE WATERHOUSE</h1>
                 </button>
                 {/* 메뉴 버튼 */}
                 <button className="nav-menu text-2xl absolute right-[15px]" onClick={() => onMenuHandler()}>
@@ -94,8 +94,8 @@ export default function Splash({ animation, isMenu, onComplete, onMenuTextStart,
                 height={100}
             />
             <div className="brandName absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center flex-col w-full">
-                <h1 className="text-3xl font-bold">THE WATERHOUSE</h1>
-                <h4>Retreat of Creative Inspiration</h4>
+                <h1 className="text-3xl text-white font-bold">THE WATERHOUSE</h1>
+                <h4 className="text-white">Retreat of Creative Inspiration</h4>
             </div>
             <NavBar animation isMenu={isMenu} onMenuHandler={onMenuHandler} />
         </div>
