@@ -59,7 +59,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                     className="absolute right-[3%] top-[3%]"
                     onClick={onClose}
                 >
-                    <X width={45} height={45} />
+                    <X width={45} height={45} className="text-white" />
                 </button>
                 {children}
             </div>

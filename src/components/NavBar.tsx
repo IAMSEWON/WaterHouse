@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Menu from "./Menu";
+import { useEffect } from "react";
 
 type NavBarProps = {
     animation?: boolean;
@@ -10,11 +11,29 @@ type NavBarProps = {
 function NavBar({ animation = false, isMenu, onMenuHandler }: NavBarProps) {
 
 
+    // 스크롤이 top 0이면  nav-wrap backdrop-blur-none
+    // top > 10 이면  nav-wrap backdrop-blur-[2px]
+    const handleNavBlur = () => {
+        if (window.scrollY > 100) {
+            document.querySelector('.nav-wrap')?.classList.add('backdrop-blur-[2px]');
+        } else {
+            document.querySelector('.nav-wrap')?.classList.remove('backdrop-blur-[2px]');
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleNavBlur);
+        return () => {
+            window.removeEventListener('scroll', handleNavBlur);
+        }
+    }, []);
+
+
     if (!animation) {
         return (
             <>
 
-                <div className="nav-wrap fixed w-full flex items-center h-[96px] z-50">
+                <div className="nav-wrap fixed w-full flex items-center h-[96px] z-50 backdrop-blur-sm">
                     <button className="nav-name text-[1.063rem]  font-bold absolute left-1/4 -translate-x-1/2 text-center w-full">
                         <h1 className="text-white">THE WATERHOUSE</h1>
                     </button>

@@ -36,6 +36,14 @@ export default function Home() {
     setIsSplashTextStart(true);
     if (videoRef.current) {
       videoRef.current.play();
+
+      const gt = gsap.timeline();
+
+      gt.to(videoRef.current, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out"
+      })
     }
   };
 
@@ -101,22 +109,6 @@ export default function Home() {
 
     // const gt = gsap.timeline();
 
-    const sections = containerRef.current.querySelectorAll(".description-section");
-
-
-    // 모든 section의 opacity를 0.5로 설정
-    sections.forEach((section) => {
-      gsap.set(section, {
-        // opacity: 0,
-      });
-
-      // section 안의 .description-wrap의 x값을 -50%로 설정
-      gsap.set(section.querySelector(".description-wrap"), {
-        // x: "-50%",
-        // bottom:"-100%"
-      });
-    });
-
     gsap.set(".desc-0", {
       // opacity: 1,
       zIndex: 5
@@ -157,27 +149,27 @@ export default function Home() {
       }
     })
       .to(".desc-0 .dim", { opacity: 1 }, ">")
-      .to(".desc-0 .txt-wrap", { y: "-100%" })
+      .to(".desc-0 .txt-wrap", { y: "-200%" })
       .to(".desc-0", { opacity: 0 })
       .to(".desc-0", { display: "none" })
       .to(".desc-1", { opacity: 1 }, "<-1")
       .to(".desc-1 .dim", { opacity: 1 })
-      .to(".desc-1 .txt-wrap", { y: "-100%" })
+      .to(".desc-1 .txt-wrap", { y: "-200%" })
       .to(".desc-1", { opacity: 0 })
       .to(".desc-1", { display: "none" })
       .to(".desc-2", { opacity: 1 }, "<-1")
       .to(".desc-2 .dim", { opacity: 1 })
-      .to(".desc-2 .txt-wrap", { y: "-100%" })
+      .to(".desc-2 .txt-wrap", { y: "-200%" })
       .to(".desc-2", { opacity: 0 })
       .to(".desc-2", { display: "none" })
       .to(".desc-3", { opacity: 1 }, "<-1")
       .to(".desc-3 .dim", { opacity: 1 })
-      .to(".desc-3 .txt-wrap", { y: "-100%" })
+      .to(".desc-3 .txt-wrap", { y: "-200%" })
       .to(".desc-3", { opacity: 0 })
       .to(".desc-3", { display: "none" })
       .to(".desc-4", { opacity: 1 }, "<-1")
       .to(".desc-4 .dim", { opacity: 1 })
-      .to(".desc-4 .txt-wrap", { y: "-100%" });
+      .to(".desc-4 .txt-wrap", { y: "-200%" });
 
   }
 
@@ -210,21 +202,13 @@ export default function Home() {
   }, [isSplash]);
 
 
-  useEffect(() => {
-
-    window.addEventListener("resize", () => { console.log('hello') });
-
-    return () => {
-      window.removeEventListener("resize", ScrollTrigger.update);
-    };
-  }, []);
 
   return (
     <div className="flex flex-col min-h-dvh bg-black">
       <Splash animation={true} isMenu={isMenu} onMenuTextStart={handleSplashStart} onComplete={handleSplashEnd} onMenuHandler={() => handleMenuToggle()} />
       <Menu isOpen={isMenu} onClose={handleMenuToggle} />
 
-      <video ref={videoRef} className="fixed top-0 left-0 w-full h-full z-0 object-cover" width="1920" height="1080" loop controls={false} preload="none" playsInline muted >
+      <video ref={videoRef} className="fixed top-0 left-0 w-full h-full z-0 object-cover opacity-0" width="1920" height="1080" loop controls={false} preload="none" playsInline muted >
         <source src="/videos/sample_video_04.mp4" type="video/mp4" />
         <track
           src="/videos/sample_video_04.mp4"
@@ -278,7 +262,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-          {/* <EmailButton className="mt-[56px] mb-[218px] mx-3" /> */}
           {/* 지도 이미지 */}
           <div className="flex flex-col">
             <Image

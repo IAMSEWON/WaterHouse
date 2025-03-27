@@ -34,6 +34,8 @@ export default function Description({
 
             {/* 중앙 컨텐츠 */}
             <div className="z-20 text-white txt-wrap h-full">
+
+                {/* 타이틀 */}
                 <div className="title-wrap w-full h-full flex items-center justify-center text-center">
                     {titleImage ? (
                         <Image
@@ -53,6 +55,8 @@ export default function Description({
                             ))}</h1>
                     )}
                 </div>
+                <div className="blank-wrap w-full h-full"></div>
+                {/* 내용 */}
                 <div className="description-wrap h-full flex flex-col mx-5 gap-8 py-20">
                     <div className="flex flex-col flex-1 gap-8">
                         <p className="text-[27px] font-bold mt-4">

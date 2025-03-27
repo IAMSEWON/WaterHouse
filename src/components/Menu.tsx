@@ -12,32 +12,32 @@ interface MenuProps {
 const menuItems = ["About", "Reservation", "Contact", "오시는 길"];
 
 const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
-    const menuRef = useRef<HTMLDivElement | null>(null);
     const [isFirstRender, setIsFirstRender] = useState(true);
 
     useEffect(() => {
+        const tl = gsap.timeline();
         // 처음 렌더링 이후로만 애니메이션 실행
         if (isFirstRender) {
             setIsFirstRender(false);
             return;
         }
 
-        if (!menuRef.current) return;
-
         if (isOpen) {
-            menuRef.current.classList.remove("hidden");
-            gsap.fromTo(
-                menuRef.current,
-                { xPercent: 100 },
-                { xPercent: 0, duration: 0.6, ease: "power3.out" }
-            );
+            tl.set(".menu-wrap", { display: "flex" })
+                .fromTo(
+                    ".menu-wrap",
+                    { xPercent: 100, opacity: 0 },
+                    { xPercent: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+                    "<"
+                )
             document.body.style.overflow = "hidden";
         } else {
-            gsap.fromTo(
-                menuRef.current,
-                { xPercent: 0 },
-                { xPercent: 100, duration: 0.6, ease: "power3.in" }
-            );
+            tl.fromTo(
+                ".menu-wrap",
+                { opacity: 1 },
+                { opacity: 0, duration: 0.6, ease: "power3.in" }
+            ).set(".menu-wrap", { display: "none" }, ">")
+
             document.body.style.overflow = "auto";
         }
 
@@ -48,8 +48,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
 
     return (
         <div
-            ref={menuRef}
-            className="fixed top-0 right-0 w-full h-full z-50 flex flex-col overflow-hidden pl-3 pr-2 bg-black hidden"
+            className="menu-wrap fixed top-0 right-0 w-full h-full z-50 flex-col overflow-hidden pl-3 pr-2 bg-black hidden"
         >
             <Image
                 src="/images/main/main_image_01.png"
