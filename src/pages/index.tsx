@@ -149,27 +149,27 @@ export default function Home() {
       }
     })
       .to(".desc-0 .dim", { opacity: 1 }, ">")
-      .to(".desc-0 .txt-wrap", { y: "-200%" })
+      .to(".desc-0 .txt-wrap", { y: "-200%", duration: 2, ease: "power2.out" })
       .to(".desc-0", { opacity: 0 })
       .to(".desc-0", { display: "none" })
       .to(".desc-1", { opacity: 1 }, "<-1")
       .to(".desc-1 .dim", { opacity: 1 })
-      .to(".desc-1 .txt-wrap", { y: "-200%" })
+      .to(".desc-1 .txt-wrap", { y: "-200%", duration: 2, ease: "power2.out" })
       .to(".desc-1", { opacity: 0 })
       .to(".desc-1", { display: "none" })
       .to(".desc-2", { opacity: 1 }, "<-1")
       .to(".desc-2 .dim", { opacity: 1 })
-      .to(".desc-2 .txt-wrap", { y: "-200%" })
+      .to(".desc-2 .txt-wrap", { y: "-200%", duration: 2, ease: "power2.out" })
       .to(".desc-2", { opacity: 0 })
       .to(".desc-2", { display: "none" })
       .to(".desc-3", { opacity: 1 }, "<-1")
       .to(".desc-3 .dim", { opacity: 1 })
-      .to(".desc-3 .txt-wrap", { y: "-200%" })
+      .to(".desc-3 .txt-wrap", { y: "-200%", duration: 2, ease: "power2.out" })
       .to(".desc-3", { opacity: 0 })
       .to(".desc-3", { display: "none" })
       .to(".desc-4", { opacity: 1 }, "<-1")
       .to(".desc-4 .dim", { opacity: 1 })
-      .to(".desc-4 .txt-wrap", { y: "-200%" });
+      .to(".desc-4 .txt-wrap", { y: "-200%", duration: 2, ease: "power2.out" });
 
   }
 
@@ -208,7 +208,7 @@ export default function Home() {
       <Splash animation={true} isMenu={isMenu} onMenuTextStart={handleSplashStart} onComplete={handleSplashEnd} onMenuHandler={() => handleMenuToggle()} />
       <Menu isOpen={isMenu} onClose={handleMenuToggle} />
 
-      <video ref={videoRef} className="fixed top-0 left-0 w-full h-full z-0 object-cover opacity-0" width="1920" height="1080" loop controls={false} preload="none" playsInline muted >
+      <video ref={videoRef} preload="auto" onLoadedData={() => console.log('hello')} className="fixed top-0 left-0 w-full h-full z-0 object-cover opacity-0" width="1920" height="1080" loop controls={false} preload="none" playsInline muted >
         <source src="/videos/sample_video_04.mp4" type="video/mp4" />
         <track
           src="/videos/sample_video_04.mp4"
