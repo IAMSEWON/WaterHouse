@@ -14,8 +14,8 @@ function AccordionReserve() {
             <table className="min-w-full text-left table-auto">
                 <tbody>
                     <tr>
-                        <td className="pl-4 py-3 border-t-white border-t-[0.3px] border-b-[0.3px] font-normal">체크인</td>
-                        <td className="px-4 py-3 border-t-white border-t-[0.3px] border-b-[0.3px] font-normal">15:00</td>
+                        <td className="pl-4 py-3 border-t-white border-b-white border-t-[0.3px] border-b-[0.3px] font-normal">체크인</td>
+                        <td className="px-4 py-3 border-t-white border-b-white border-t-[0.3px] border-b-[0.3px] font-normal">15:00</td>
                     </tr>
                     <tr>
                         <td className="pl-4 py-3 border-b-white border-b-[0.3px] font-normal">체크아웃</td>
@@ -110,15 +110,15 @@ function AccordionAmenities() {
 function AccordionLocation() {
     return (
         <div className="flex flex-col gap-4">
-            <div className="">
+            <div className="line-clamp-3">
                 서울특별시 종로구 삼청로 35-83, 더 워터하우스<br />
                 주차공간은 마련되어 있지 않습니다. 근처 유료주차장을<br />
                 안내해드리고 있습니다.
             </div>
 
-            <div>
-                <h1>TAXI</h1>
-                <div>
+            <div className="flex flex-col gap-2">
+                <h1 className="font-bold">TAXI</h1>
+                <div className="line-clamp-3">
                     북촌 한옥마을 ‘차 마시는뜰(차뜰)’에서 하차 <br />
                     ‘서울 서울 서울’까지 직진 후 왼쪽 방향으로 73m 직진
                 </div>
