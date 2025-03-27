@@ -1,40 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# gsap.set()
 
-## Getting Started
+💡 애니메이션 없이 요소의 속성을 즉시 설정
+set()은 애니메이션 없이 특정 속성을 즉시 적용하는 기능입니다.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+gsap.set(".box", { x: 100, opacity: 0.5 });
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📌 설명
+•	.box 요소를 x: 100px로 이동.
+•	opacity: 0.5로 설정 (투명도 50%).
+•	애니메이션 없이 즉시 적용됨!
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# gsap.to()
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+gsap.to(".box", { x: 300, opacity: 1, duration: 2 });
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+📌 설명
+	•	.box 요소를 x: 300px로 2초 동안 이동.
+	•	opacity: 1 (완전히 보이게 만듦).
+	•	현재 상태에서 설정한 값으로 변함!
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# gsap.fromTo()
 
-## Learn More
+gsap.fromTo(".box", 
+  { x: 0, opacity: 0 },  // 시작 상태
+  { x: 300, opacity: 1, duration: 2 } // 끝 상태
+);
 
-To learn more about Next.js, take a look at the following resources:
+📌 설명
+	•	처음에는 x: 0, opacity: 0 (완전히 숨김).
+	•	2초 동안 x: 300으로 이동하면서 opacity: 1로 변화.
+	•	from()과 to()를 합친 느낌!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# scrollTrigger
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+gsap.to(".box", {
+  x: 500,
+  scrollTrigger: {
+    trigger: ".box", // 이 요소가 화면에 나타날 때 애니메이션 시작
+    start: "top 80%", // 박스의 top이 화면의 80% 지점에 닿으면 시작
+    end: "top 20%", // 박스의 top이 화면의 20% 지점에 닿으면 종료
+    scrub: true, // 스크롤 속도에 따라 부드럽게 실행
+    markers: true, // 개발용 마커 표시 (디버깅용)
+    scrub: 1.2, // 스크롤에 따라 애니메이션이 부드럽게 따라감
+    pin: true, // 요소를 스크롤 시 고정
+    pinSpacing: true, // 고정 후 주변 요소와의 간격 유지
+  }
+});
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+📌 설명
+	•	.box 요소가 스크롤될 때 x: 500px으로 이동.
+	•	start: "top 80%" → 박스의 top이 화면의 80% 지점에 닿으면 시작.
+	•	end: "top 20%" → 박스의 top이 화면의 20% 지점에 닿으면 애니메이션 종료.
+	•	scrub: true → 스크롤 속도에 따라 자연스럽게 애니메이션 진행.
+	•	markers: true → 애니메이션 범위를 시각적으로 확인할 수 있음.
+	•	pin: true → 요소를 스크롤 시 고정.
+	•	pinSpacing: true → 고정 후 주변 요소와의 간격 유지.
