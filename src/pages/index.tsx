@@ -149,27 +149,27 @@ export default function Home() {
       }
     })
       .to(".desc-0 .dim", { opacity: 1 }, ">")
-      .to(".desc-0 .txt-wrap", { y: "-200%", duration: 5, ease: "power2.out" })
+      .to(".desc-0 .txt-wrap", { y: "-200%", duration: 20, ease: "power2.out" })
       .to(".desc-0", { opacity: 0 })
       .to(".desc-0", { display: "none" })
       .to(".desc-1", { opacity: 1 }, "<-1")
       .to(".desc-1 .dim", { opacity: 1 })
-      .to(".desc-1 .txt-wrap", { y: "-200%", duration: 5, ease: "power2.out" })
+      .to(".desc-1 .txt-wrap", { y: "-200%", duration: 20, ease: "power2.out" })
       .to(".desc-1", { opacity: 0 })
       .to(".desc-1", { display: "none" })
       .to(".desc-2", { opacity: 1 }, "<-1")
       .to(".desc-2 .dim", { opacity: 1 })
-      .to(".desc-2 .txt-wrap", { y: "-200%", duration: 5, ease: "power2.out" })
+      .to(".desc-2 .txt-wrap", { y: "-200%", duration: 20, ease: "power2.out" })
       .to(".desc-2", { opacity: 0 })
       .to(".desc-2", { display: "none" })
       .to(".desc-3", { opacity: 1 }, "<-1")
       .to(".desc-3 .dim", { opacity: 1 })
-      .to(".desc-3 .txt-wrap", { y: "-200%", duration: 5, ease: "power2.out" })
+      .to(".desc-3 .txt-wrap", { y: "-200%", duration: 20, ease: "power2.out" })
       .to(".desc-3", { opacity: 0 })
       .to(".desc-3", { display: "none" })
       .to(".desc-4", { opacity: 1 }, "<-1")
       .to(".desc-4 .dim", { opacity: 1 })
-      .to(".desc-4 .txt-wrap", { y: "-200%", duration: 5, ease: "power2.out" });
+      .to(".desc-4 .txt-wrap", { y: "-200%", duration: 20, ease: "power2.out" });
 
   }
 
